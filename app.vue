@@ -12,6 +12,7 @@ body {
 
 main {
   margin: 0 2rem;
+  min-height: 90vh;
 }
 article {
   display: flex;

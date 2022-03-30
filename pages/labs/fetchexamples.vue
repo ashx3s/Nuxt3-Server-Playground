@@ -10,12 +10,14 @@
       <section>
         <h2>JSON Placeholder Image Fetch</h2>
         <!-- Render some images from jsonplaceholder -->
-        <img
-          :src="image.url"
-          :alt="image.title"
-          v-for="image in filteredImages"
-          :key="image.id"
-        />
+        <div class="gallery">
+          <img
+            :src="image.thumbnailUrl"
+            :alt="image.title"
+            v-for="image in filteredImages"
+            :key="image.id"
+          />
+        </div>
       </section>
     </div>
   </main>
@@ -23,16 +25,24 @@
 <script setup>
 // don't wrap hello in { }
 const hello = await $fetch("/api/hello");
+
 // console.log(hello);
 
 // Fetch from our api that is calling from the jsonplaceholder api
 const { data: imageData } = await useFetch("/api/images");
 
+// Use .value to filter the array properly
 const filteredImages = computed(() => {
-  return imageData.value.filter((image, index, arr) => {
-    // This syntax is trying to return an array length of 10, but is not actually creating an array that is 10 items long
-    return arr.length == 10;
-  });
+  return imageData.value.slice(0, 8);
 });
-console.log(filteredImages.value);
 </script>
+<style setup>
+.gallery {
+  margin: 0 auto;
+  max-width: 60vw;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+</style>
