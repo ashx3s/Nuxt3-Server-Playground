@@ -35,6 +35,19 @@ This is a practice space for working with the Nitro Server. It focuses on `serve
    - Create a json file in your `public/data/` folder and add content to it (JSONplaceholder is a great place to get some, or write your own)
    - Then create an endpoint that imports the data and creates an endpoint for it
    - Use `$fetch()` on a page to call the information and render it onto a page
+   - Create separate endpoints for each item in your data. Example Syntax:
+   ```
+   const {pathname } = new URL(req.url, `http://${req.headers.host}`)
+   const id = pathname.split('/')[1];
+   if (!id) {
+      return {
+         posts
+      }
+   } else {
+      return posts.find(post => post.id == parseInt(id))
+   }
+   ```
+   - Then Create a dynamic page to generate pages for each post with `[id].vue` syntax
 4. Storyblok:
    - Connect storyblok to your project
    - Add fetch content and render it on a page
