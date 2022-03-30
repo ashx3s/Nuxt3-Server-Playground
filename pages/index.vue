@@ -2,6 +2,11 @@
   <main>
     <header>
       <h1>Home Page</h1>
+      <ul>
+        <li v-for="member in teamMembers" :key="member.id">
+          {{ member.role }}
+        </li>
+      </ul>
     </header>
     <div>
       <!-- Demo Router Stuff-->
@@ -30,8 +35,22 @@
     </div>
   </main>
 </template>
+<script setup>
+const teamMembers = await $fetch("/api/teams");
+</script>
 <style scoped>
 main {
   min-height: 85vh;
+}
+header ul {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+header ul li {
+  font-family: sans-serif;
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
 }
 </style>
