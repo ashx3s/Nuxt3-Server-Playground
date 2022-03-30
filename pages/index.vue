@@ -4,6 +4,11 @@
       <h1>Home Page</h1>
     </header>
     <div>
+      <!-- Demo Router Stuff-->
+      <section>
+        <h2>Router Demonstration</h2>
+        <pre>{{ $router.options.routes }}</pre>
+      </section>
       <!-- Add page content here -->
       <article>
         <h2>Router</h2>
