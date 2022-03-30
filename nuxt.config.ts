@@ -12,4 +12,7 @@ export default defineNuxtConfig({
       ],
     });
   },
+  buildModules: [
+    ["@storyblok/nuxt", { accessToken: "aO54lwvbURX9K3rQFRVSvwtt" }],
+  ],
 });
